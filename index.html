@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CrystalsColletor The Game</title>
+  <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Added a link to Bootstrap-->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="jumbotron">
+
+        <h1 class="text-center">Crystals, Gems and Shiny Things!</h1>
+        <br>
+        <br>
+
+        <div class="text-center">
+    
+          <!-- random-button for crystals -->
+          <button id="random-button-1" class="btn btn-primary btn-lg"><h1>Gem 1</h1><img src="assets/images/crystals-1.jpeg" class="img-responsive" alt="crystal-1" width="250" height="202"></button>
+          <button id="random-button-2" class="btn btn-primary btn-lg"><h1>Gem 2</h1><img src="assets/images/crystal-2.jpg" class="img-responsive" alt="crystal-2" width="250" height="202"></button>
+          <button id="random-button-3" class="btn btn-primary btn-lg"><h1>Gem 3</h1><img src="assets/images/crystal-3.jpg" class="img-responsive" alt="crystal-3" width="250" height="202"></button>
+          <button id="random-button-4" class="btn btn-primary btn-lg"><h1>Gem 4</h1><img src="assets/images/crystal-4.jpeg" class="img-responsive" alt="crystal-4" width="250" height="202"></button>
+    
+        </div>
+    
+      </div>
+      
+      
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="text-center">My Score: <span  class="text-center" id="score">0</span></h2>
+            
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-center" id="target">Target Score: <span id="target1"></span></h2>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
+        <h4 class="text-center">Wins <span id='win-counter'>0</span> | Losses <span id='loss-counter'>0</span></h4>
+      </div>
+    </div>
+</div>  
+        
+  <h1 class="text-center" id="random-number"></h1>
+
+  <script type="text/javascript">
+
+    
+    $(document).ready(function() {
+    
+    // creating variables gloablly
+    var winCounter = 0;
+    var lossCounter = 0;
+    var targetScore = [];
+    var totalScore = 0;
+    // var gemArray = [gem1, gem2, gem3, gem4];
+
+      var gem1 = Math.floor((Math.random() * 10) + 1);
+      $("#random-button-1").on("click", function () {
+        console.log(totalScore);
+      totalScore += gem1
+      $("#score").html(totalScore);
+    });
+
+      var gem2 = Math.floor((Math.random() * 10) + 1);
+      $("#random-button-2").on("click", function () {
+        console.log(totalScore);
+        totalScore += gem2
+        $("#score").html(totalScore);
+      });
+
+      var gem3 = Math.floor((Math.random() * 10) + 1);
+      $("#random-button-3").on("click", function () {
+        console.log(totalScore);
+        totalScore += gem3
+        $("#score").html(totalScore);
+      });
+
+      var gem4 = Math.floor((Math.random() * 10) + 1);
+      $("#random-button-4").on("click", function () {
+        console.log(totalScore);
+        totalScore += gem4
+        $("#score").html(totalScore);
+      });
+      
+      
+      // totalScore = gem1 + gem2 + gem3 + gem4
+      //   console.log(totalScore);
+      
+      // <!-- The random number shown at the start of the game should be between 19 - 120. -->
+      targetScore = Math.floor(Math.random() * ((120-19)+1) + 19);
+      $("#target1").html(targetScore);
+
+      // define how to win
+      // if total score reaches target score a win is added to the scoreboard
+    
+      
+});
+
+function roundComplete() {
+        console.log("WinCount: " + winCounter + " | LossCount: " + lossCounter);
+
+      if (totalScore === targetScore) {
+        winCounter++;
+        alert("You win!");
+        $("win-counter").text(winCounter);
+        // document.getElementById("win-counter").innerHTML = winCounter;
+
+        startGame();
+      }
+      else if (totalScore > targetScore) {
+        lossCounter++;
+        alert("You Lose");
+        $("loss-counter").text(lossCounter);
+        // document.getElementById("loss-counter").innerHTML = lossCounter;
+
+        startGame();  
+      }
+   }
+
+      // else, the total score exceeds the target score
+
+      // reset the points after win or lose, hidden gem points, etc.
+
+
+    // });
+    
+
+  </script>
+  
+</body>
+</html>
